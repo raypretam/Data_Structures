@@ -47,7 +47,7 @@ bool Search(BstNode* root,int data) {
 		return Search(root->right,data);
 	}
 }
-
+//To find the maximum element int the tree
 int findMax(BstNode* root){
   if(root==NULL){
     cout<<"Tree is empty\n";
@@ -58,7 +58,7 @@ int findMax(BstNode* root){
   }
 	findMax(root->right);
 }
-
+//To find the minimum element in the tree.
 int findMin(BstNode* root){
   if(root==NULL){
     cout<<"Tree is empty\n";
@@ -69,7 +69,7 @@ int findMin(BstNode* root){
   }
 	findMin(root->left);
 }
-
+//To find the height of the tree.
 int findHeight(struct BstNode *root){
   if(root==NULL)
     return -1;
