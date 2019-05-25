@@ -47,6 +47,35 @@ bool Search(BstNode* root,int data) {
 		return Search(root->right,data);
 	}
 }
+
+int findMax(BstNode* root){
+  if(root==NULL){
+    cout<<"Tree is empty\n";
+    return -1;
+  }
+  else if(root->right==NULL){
+    return (root->data);
+  }
+	findMax(root->right);
+}
+
+int findMin(BstNode* root){
+  if(root==NULL){
+    cout<<"Tree is empty\n";
+    return -1;
+  }
+  else if(root->left==NULL){
+    return (root->data);
+  }
+	findMin(root->left);
+}
+
+int findHeight(struct BstNode *root){
+  if(root==NULL)
+    return -1;
+  return (max(findHeight(root->left),findHeight(root->right))+1);
+}
+
 int main() {
 	BstNode* root = NULL;  // Creating an empty tree
 	/*Code to test the logic*/
@@ -56,6 +85,10 @@ int main() {
 	root = Insert(root,25);
 	root = Insert(root,8);
 	root = Insert(root,12);
+	int h=findHeight(root);
+  int max=findMax(root);
+  int min=findMin(root);
+  cout<<h<<" "<<max<<" "<<min<<endl;
 	// Ask user to enter a number.
 	int number;
 	cout<<"Enter number be searched\n";
