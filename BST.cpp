@@ -1,6 +1,7 @@
 // Binary Search Tree - Implemenation in C++
 // Simple program to create a BST of integers and search an element in it
 #include<iostream>
+#include<queue>
 using namespace std;
 //Definition of Node for Binary search tree
 struct BstNode {
@@ -76,6 +77,24 @@ int findHeight(struct BstNode *root){
   return (max(findHeight(root->left),findHeight(root->right))+1);
 }
 
+
+void BFS(BstNode* root){
+	if(root==NULL){
+		cout<<"Tree is empty\n";
+	}
+	queue<BstNode* > q;
+	q.push(root);
+	cout<<"The Nodes in the tree are : ";
+	while(!q.empty()){
+		BstNode* current=q.front();
+		cout<<current->data<<" ";
+		q.pop();
+		if(current->left!=NULL) q.push(current->left);
+		if(current->right!=NULL) q.push(current->right);
+	}
+		cout<<"\n";
+}
+
 int main() {
 	BstNode* root = NULL;  // Creating an empty tree
 	/*Code to test the logic*/
@@ -85,10 +104,13 @@ int main() {
 	root = Insert(root,25);
 	root = Insert(root,8);
 	root = Insert(root,12);
+	BFS(root);
 	int h=findHeight(root);
   int max=findMax(root);
   int min=findMin(root);
-  cout<<h<<" "<<max<<" "<<min<<endl;
+  cout<<"height of the tree : "<<h<<"\n";
+	cout<<"maximum element : "<<max<<"\n";
+	cout<<"minimum element : "<<min<<endl;
 	// Ask user to enter a number.
 	int number;
 	cout<<"Enter number be searched\n";
