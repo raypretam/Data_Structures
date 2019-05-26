@@ -48,7 +48,7 @@ bool Search(BstNode* root,int data) {
 		return Search(root->right,data);
 	}
 }
-//To find the maximum element int the tree
+
 int findMax(BstNode* root){
   if(root==NULL){
     cout<<"Tree is empty\n";
@@ -59,7 +59,7 @@ int findMax(BstNode* root){
   }
 	findMax(root->right);
 }
-//To find the minimum element in the tree.
+
 int findMin(BstNode* root){
   if(root==NULL){
     cout<<"Tree is empty\n";
@@ -70,7 +70,7 @@ int findMin(BstNode* root){
   }
 	findMin(root->left);
 }
-//To find the height of the tree.
+
 int findHeight(struct BstNode *root){
   if(root==NULL)
     return -1;
@@ -95,6 +95,33 @@ void BFS(BstNode* root){
 		cout<<"\n";
 }
 
+//Function to visit nodes in Preorder
+void Preorder(BstNode *root) {
+	// base condition for recursion
+	// if tree/sub-tree is empty, return and exit
+	if(root == NULL) return;
+
+	cout<<root->data<<" "; // Print data
+	Preorder(root->left);     // Visit left subtree
+	Preorder(root->right);    // Visit right subtree
+}
+
+//Function to visit nodes in Inorder
+void Inorder(BstNode *root) {
+	if(root == NULL) return;
+	Inorder(root->left);       //Visit left subtree
+	cout<<root->data<<" ";  //Print data
+	Inorder(root->right);      // Visit right subtree
+}
+
+//Function to visit nodes in Postorder
+void Postorder(BstNode *root) {
+	if(root == NULL) return;
+	Postorder(root->left);    // Visit left subtree
+	Postorder(root->right);   // Visit right subtree
+	cout<<root->data<<" "; // Print data
+}
+
 int main() {
 	BstNode* root = NULL;  // Creating an empty tree
 	/*Code to test the logic*/
@@ -105,6 +132,15 @@ int main() {
 	root = Insert(root,8);
 	root = Insert(root,12);
 	BFS(root);
+	cout<<"Preorder DFS : ";
+	Preorder(root);
+	cout<<endl;
+	cout<<"Inorder DFS : ";
+	Inorder(root);
+	cout<<endl;
+	cout<<"Preorder DFS : ";
+	Postorder(root);
+	cout<<endl;
 	int h=findHeight(root);
   int max=findMax(root);
   int min=findMin(root);
