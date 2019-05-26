@@ -49,6 +49,8 @@ bool Search(BstNode* root,int data) {
 	}
 }
 
+//To find the maximum element in the tree
+
 int findMax(BstNode* root){
   if(root==NULL){
     cout<<"Tree is empty\n";
@@ -59,6 +61,8 @@ int findMax(BstNode* root){
   }
 	findMax(root->right);
 }
+
+//To find the minimum element of the tree
 
 int findMin(BstNode* root){
   if(root==NULL){
@@ -71,12 +75,15 @@ int findMin(BstNode* root){
 	findMin(root->left);
 }
 
+//To find the height of the tree
+
 int findHeight(struct BstNode *root){
   if(root==NULL)
     return -1;
   return (max(findHeight(root->left),findHeight(root->right))+1);
 }
 
+//To traverse the tree in Breadth-First approach
 
 void BFS(BstNode* root){
 	if(root==NULL){
@@ -142,9 +149,9 @@ int main() {
 	Postorder(root);
 	cout<<endl;
 	int h=findHeight(root);
-  int max=findMax(root);
-  int min=findMin(root);
-  cout<<"height of the tree : "<<h<<"\n";
+        int max=findMax(root);
+  	int min=findMin(root);
+ 	 cout<<"height of the tree : "<<h<<"\n";
 	cout<<"maximum element : "<<max<<"\n";
 	cout<<"minimum element : "<<min<<endl;
 	// Ask user to enter a number.
