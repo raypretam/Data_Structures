@@ -28,6 +28,25 @@ void update(int* arr,int* temp,int treeNode,int start,int end,int idx,int value)
   tree[treeNode]=tree[2*treeNode]+tree[2*treeNode+1];
 }
 
+int query(int *tree, int start, int end,int treeNode, int l, int r)
+{
+    if(r < start or end < l)
+    {
+        // range represented by a node is completely outside the given range
+        return 0;
+    }
+    if(l <= start and end <= r)
+    {
+        // range represented by a node is completely inside the given range
+        return tree[node];
+    }
+    // range represented by a node is partially inside and partially outside the given range
+    int mid = (start + end) / 2;
+    int p1 = query(2*treeNode, start, mid, l, r);
+    int p2 = query(2*treeNode+1, mid+1, end, l, r);
+    return (p1 + p2);
+}
+
 int main(){
   int n;
   cout<<"Enter the number of elements: ";
