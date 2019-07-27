@@ -46,7 +46,25 @@ void insertEnd(struct Node** head,int x){
     last->next = new_node;
     return;
 }
-//Printing the linked List 
+void deleteNode(struct Node** head,int position){
+  if(*head_ref==NULL)
+    return;
+}
+struct Node* temp=*head_ref;
+if(position==0){
+  *head_ref=temp->next;
+  free(temp);
+  return;
+}
+for(int i=0;temp!=NULL && i<position-1;i++)
+  temp=temp->next;
+if(temp==NULL || temp->next==NULL)
+  return;
+struct Node* next=temp->next->next;
+free(temp->next);
+temp->next=next;
+}
+//Printing the linked List
 void Print(){
   struct Node* temp=head;
   printf("List is: ");
@@ -56,15 +74,19 @@ void Print(){
   }
   printf("\n");
 }
-int main(){
-  int n,i,x;
-  printf("How many numbers\n");
-  scanf("%d",&n);
-  for(int i=0;i<n;i++){
-    printf("Enter a number:\n");
-    scanf("%d",&x);
-    Insert(x);
-    Print();
-  }
-  return 0;
+int main()
+{
+    struct Node* head = NULL;
+    push(&head, 7);
+    push(&head, 1);
+    push(&head, 3);
+    push(&head, 2);
+    push(&head, 8);
+
+    puts("Created Linked List: ");
+    printList(head);
+    deleteNode(&head, 4);
+    puts("\nLinked List after Deletion at position 4: ");
+    printList(head);
+    return 0;
 }
