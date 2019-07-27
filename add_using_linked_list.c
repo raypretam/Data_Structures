@@ -15,7 +15,7 @@ void push(struct Node ** head_ref,int new_data){
   new_node->next=*head_ref;
   *head_ref=new_node;
 }
-struct addList(struct Node* first,struct Node* second){
+struct Node* addList(struct Node* first,struct Node* second){
   struct Node* res=NULL;
   struct Node* prev,*temp=NULL;
   int carry=0,sum;
@@ -69,9 +69,9 @@ int main(void)
     printList(second);
 
     // Add the two lists and see result
-    res = addTwoLists(first, second);
+    res = addList(first, second);
     printf("Resultant list is ");
     printList(res);
 
    return 0;
-}  
+}
